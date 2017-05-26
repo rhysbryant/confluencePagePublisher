@@ -1,0 +1,18 @@
+{
+	"user":"{app-user-name}",
+	"password":"{app-user-pass}",
+	"tempplateName":"sample-tempplate.html",
+	"url":"{server-url}",
+	"pageTitle":"Page %VERSION%",
+	"spaceKey":"sample-space",
+	"labels":[
+		{
+			"prefix":"global",
+			"name":"Test Page"
+		}
+	],
+	"parentPages":[{
+		"id":"{page-id}"
+	}
+	]
+}
