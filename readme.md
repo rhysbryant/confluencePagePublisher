@@ -1,14 +1,15 @@
-# Confluence Page Publisher Usage
+# Confluence Page Publisher 
 
-a simple utility publishing pages to confluence based on a predefined template
+Is a simple utility publishing pages to confluence based on a predefined template.
 
-## command line usage
+# Using it
 
-- -filelist defines a list of replacements within the template file.
+## Command line Arguments
 
-  the format required is string-to-find;replacement any number of find ; replacements can be provided
+- -fieldlist defines a list of replacements within the template file.
+  The format required is string-to-find;replacement[;...] any number of find ; replacements can be provided.
 
-- -config the name or path to the config file
+- -config the name or path to the config file.
 
 ### Example
 
@@ -16,7 +17,8 @@ a simple utility publishing pages to confluence based on a predefined template
 
 ## Config file
 
-the config file is json based. the fields parentPages and labels are optional all other fields are required
+The config file is json based. the fields parentPages and labels are optional all other fields are required.
+Note: the replacements strings for the template (see above) can also be used in some fields in the config file.
 
 ```json
 {
@@ -39,7 +41,7 @@ the config file is json based. the fields parentPages and labels are optional al
 
 ## Template file
 
-the template can be html or any other format accepted by confluence
+The template can be html or any other format accepted by confluence.
 
 ### Example
 
@@ -52,7 +54,7 @@ the template can be html or any other format accepted by confluence
 
 # Contributing 
 
-want to Contribute? Feel free to create a pull request
+Want to Contribute? Feel free to create a pull request.
 
 # License
 
