@@ -23,7 +23,9 @@ type Config struct {
 }
 
 const (
-	FieldSeperator = ";"
+	FieldSeperator     = ";"
+	DefaultLabelPrefix = "Global"
+	LabelSeperator     = " "
 )
 
 func loadConfig(fileName string) (*Config, error) {
@@ -49,10 +51,11 @@ func loadFile(file string) (string, error) {
 }
 
 func main() {
-	var fieldList, configPath string
+	var fieldList, configPath, labels string
 
 	flag.StringVar(&configPath, "config", "", "the config path")
 	flag.StringVar(&fieldList, "fieldList", "", "macro name"+FieldSeperator+"replacement")
+	flag.StringVar(&labels, "labels", "", "optional extra labels space seperated - added with global prefix")
 	flag.Parse()
 
 	replacements := strings.Split(fieldList, FieldSeperator)
@@ -92,6 +95,18 @@ func main() {
 	c.Body.Storage.Representation = "storage"
 	c.Meta.Labels = cfg.Labels
 	c.Ancestors = cfg.ParentPages
+
+	if labels != "" {
+
+		prefix := DefaultLabelPrefix
+		l := strings.Split(labels, LabelSeperator)
+
+		for _, item := range l {
+			labelName := userMacroReplacer.Replace(item)
+
+			c.Meta.Labels = append(c.Meta.Labels, confluence.Label{Prefix: &prefix, Name: &labelName})
+		}
+	}
 
 	newContent, err := wiki.AddContent(&c)
 	if err != nil {

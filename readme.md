@@ -11,9 +11,11 @@ Is a simple utility publishing pages to confluence based on a predefined templat
 
 - -config the name or path to the config file.
 
+- -labels space seperated list of labels
+
 ### Example
 
-`confluencePagePublisher -config="config-file-name" -fieldlist="%VERSION%;1.0.0;%MSG%;Hello World"`
+`confluencePagePublisher -config="config-file-name" -fieldlist="%VERSION%;1.0.0;%MSG%;Hello World" -labels="test v1.0.0"`
 
 ## Config file
 
