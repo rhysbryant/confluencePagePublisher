@@ -1,6 +1,6 @@
 {
-	"user":"{app-user-name}",
-	"password":"{app-user-pass}",
+	"user":"",
+	"password":"",
 	"tempplateName":"sample-tempplate.html",
 	"url":"{server-url}",
 	"pageTitle":"Page %VERSION%",

@@ -22,6 +22,8 @@ Is a simple utility publishing pages to confluence based on a predefined templat
 The config file is json based. the fields parentPages and labels are optional all other fields are required.
 Note: the replacements strings for the template (see above) can also be used in some fields in the config file.
 
+**Note:** if the username  and password are missing from the Config file the user will be prompted.
+
 ```json
 {
 "user":"{app-user-name}",
