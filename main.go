@@ -1,13 +1,16 @@
 package main
 
 import (
+	"bufio"
 	"encoding/json"
 	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
+	"os"
 	"strings"
 
+	"github.com/howeyc/gopass"
 	"github.com/rhysbryant/go-confluence"
 )
 
@@ -25,6 +28,23 @@ type Config struct {
 const (
 	FieldSeperator = ";"
 )
+
+func getLineFromStdIn(prompt string) string {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print(prompt)
+	text, _ := reader.ReadString('\n')
+	return text
+}
+
+func getPasswordFromStdIn() string {
+	fmt.Printf("Password: ")
+	pass, err := gopass.GetPasswdMasked()
+	if err != nil {
+		return ""
+	}
+
+	return string(pass)
+}
 
 func loadConfig(fileName string) (*Config, error) {
 	config := Config{}
@@ -68,6 +88,14 @@ func main() {
 	cfg, err := loadConfig(configPath)
 	if err != nil {
 		log.Fatalln(err)
+	}
+
+	if cfg.User == "" {
+		cfg.User = getLineFromStdIn("User Name:")
+	}
+
+	if cfg.Pass == "" {
+		cfg.Pass = getPasswordFromStdIn()
 	}
 
 	tempplate, err := loadFile(cfg.TempplateName)
