@@ -34,8 +34,12 @@ const (
 func getLineFromStdIn(prompt string) string {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print(prompt)
-	text, _ := reader.ReadString('\n')
-	return text
+
+	lineBuffer, _, err := reader.ReadLine()
+	if err != nil {
+		return ""
+	}
+	return string(lineBuffer)
 }
 
 func getPasswordFromStdIn() string {
