@@ -27,7 +27,7 @@ type Config struct {
 
 const (
 	FieldSeperator     = ";"
-	DefaultLabelPrefix = "Global"
+	DefaultLabelPrefix = "global"
 	LabelSeperator     = " "
 )
 
